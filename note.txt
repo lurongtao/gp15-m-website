@@ -1,0 +1,19 @@
+http://aui.github.io/art-template/docs/api.html
+
+-- art-template + webpack
+1、npm i art-template art-template-loader
+2、配置
+module: {
+  rules: [
+    {
+      test: /\.art$/,
+      loader: "art-template-loader"
+    }
+  ]
+}
+3、使用
+const layoutView = require('./views/layout.art')
+
+console.log(layoutView({
+  name: 'yangli'
+}))

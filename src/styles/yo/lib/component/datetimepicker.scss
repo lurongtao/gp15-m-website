@@ -1,0 +1,10 @@
+@charset "utf-8";
+@import "./picker";
+
+.yo-datetimepicker {
+    @include flexbox;
+    width: 100%;
+    > .yo-picker {
+        @include flex;
+    }
+}

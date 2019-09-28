@@ -14,6 +14,12 @@
     "gulp": "^4.0.2",
     "gulp-connect": "^5.7.0",
     "gulp-sass": "^4.0.2",
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "webpack-stream": "^5.2.1"
+  },
+  "dependencies": {
+    "art-template": "^4.13.2",
+    "art-template-loader": "^1.4.3",
+    "string-loader": "0.0.1"
   }
 }

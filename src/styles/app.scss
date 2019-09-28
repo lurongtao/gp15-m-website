@@ -1,5 +1,3 @@
-$base_color: red;
+@import './yo/usage/core/reset.scss';
 
-body {
-  background: $base_color;
-}
+@import './modules/index.scss';
