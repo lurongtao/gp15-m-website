@@ -128,7 +128,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n__webpack_require__(/*! ./controllers/positions */ \"./src/scripts/controllers/positions.js\")\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
 
 /***/ }),
 
@@ -143,6 +143,17 @@ eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/
 
 /***/ }),
 
+/***/ "./src/scripts/controllers/positions.js":
+/*!**********************************************!*\
+  !*** ./src/scripts/controllers/positions.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const positionView = __webpack_require__(/*! ../views/position.art */ \"./src/scripts/views/position.art\")\n\n// const BScroll = require('better-scroll')\n\nclass Position {\n  constructor() {\n    this.render()\n  }\n\n  render() {\n    let main = document.querySelector('main')\n    let html = positionView({})\n    main.innerHTML = html\n    \n    new BScroll(main, {})\n  }\n}\n\nnew Position()\n\n//# sourceURL=webpack:///./src/scripts/controllers/positions.js?");
+
+/***/ }),
+
 /***/ "./src/scripts/views/layout.art":
 /*!**************************************!*\
   !*** ./src/scripts/views/layout.art ***!
@@ -150,7 +161,18 @@ eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"indexContainer\">\\n  <header>拉勾网</header>\\n  <main>\\n  </main>\\n  <footer>\\n    <ul>\\n      <li class=\"active\"><span class=\"yo-ico\">&#xe7d4;</span>职位</li>\\n      <li><span class=\"yo-ico\">&#xe7da;</span>搜索</li>\\n      <li><span class=\"yo-ico\">&#xe78b;</span>我的</li>\\n    </ul>\\n  </footer>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"index-container\">\\n  <header>拉勾网</header>\\n  <main>\\n  </main>\\n  <footer>\\n    <ul>\\n      <li class=\"active\"><span class=\"yo-ico\">&#xe7d4;</span>职位</li>\\n      <li><span class=\"yo-ico\">&#xe7da;</span>搜索</li>\\n      <li><span class=\"yo-ico\">&#xe78b;</span>我的</li>\\n    </ul>\\n  </footer>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/position.art":
+/*!****************************************!*\
+  !*** ./src/scripts/views/position.art ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"list-container\">\\n  <nav>\\n    <div>10秒钟定制职位</div>\\n    <div>去登录</div>\\n  </nav>\\n  <ul>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n    <li class=\"list-item\">\\n      <img ';\n    $$out += 'src=\"//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png\"';\n    $$out += ' class=\"item-logo\">\\n      <div class=\"item-desc\">\\n        <h2 class=\"item-title\">石游网络</h2>\\n        <p class=\"item-info\">\\n          <span class=\"item-pos\">\\n            人事及行政助理 实习生 [ 上海 ]\\n          </span>\\n          <span class=\"item-salary\">2k-4k</span>\\n        </p>\\n        <p class=\"item-time\">今天 16:00</p>\\n      </div>\\n    </li>\\n  </ul>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/position.art?");
 
 /***/ })
 

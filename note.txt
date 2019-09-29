@@ -30,3 +30,8 @@ C-Controller
 rem: 单位 root(html) em
 
 filezilla
+
+DPR: device pixel radio  逻辑像素/物理像素
+retina 屏
+
+http://ustbhuangyi.github.io/better-scroll/doc/api.html

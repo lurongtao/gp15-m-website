@@ -1,0 +1,99 @@
+<div class="list-container">
+  <nav>
+    <div>10秒钟定制职位</div>
+    <div>去登录</div>
+  </nav>
+  <ul>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+    <li class="list-item">
+      <img src="//www.lgstatic.com/i/image2/M01/AA/05/CgoB5lvqfuiAKs_1AAAl4K4n46w835.png" class="item-logo">
+      <div class="item-desc">
+        <h2 class="item-title">石游网络</h2>
+        <p class="item-info">
+          <span class="item-pos">
+            人事及行政助理 实习生 [ 上海 ]
+          </span>
+          <span class="item-salary">2k-4k</span>
+        </p>
+        <p class="item-time">今天 16:00</p>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,7 +1,8 @@
-.indexContainer {
+.index-container {
   display: flex;
   flex-direction: column;
   height: 100%;
+
   header {
     height: .44rem;
     background: #00b38a;
@@ -13,6 +14,7 @@
 
   main {
     flex: 1;
+    overflow: hidden;
   }
 
   footer {

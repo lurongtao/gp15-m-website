@@ -1,22 +1,23 @@
-.indexContainer {
+.index-container {
   display: flex;
   flex-direction: column;
   height: 100%; }
-  .indexContainer header {
+  .index-container header {
     height: .44rem;
     background: #00b38a;
     font-size: .18rem;
     text-align: center;
     line-height: .44rem;
     color: #fff; }
-  .indexContainer main {
-    flex: 1; }
-  .indexContainer footer {
+  .index-container main {
+    flex: 1;
+    overflow: hidden; }
+  .index-container footer {
     height: .44rem; }
-    .indexContainer footer ul {
+    .index-container footer ul {
       height: 100%;
       display: flex; }
-      .indexContainer footer ul li {
+      .index-container footer ul li {
         flex: 1;
         background: #f6f6f6;
         text-align: center;
@@ -26,8 +27,8 @@
         align-items: center;
         justify-content: center;
         color: #c2cfcc; }
-        .indexContainer footer ul li span {
+        .index-container footer ul li span {
           font-size: .2rem; }
-        .indexContainer footer ul li.active {
+        .index-container footer ul li.active {
           background: #e7f3f0;
           color: #00b38a; }

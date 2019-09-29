@@ -1,0 +1,48 @@
+.list-container nav {
+  height: .44rem;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  position: relative; }
+  .list-container nav > div:first-child {
+    flex: 1;
+    line-height: .44rem;
+    padding-left: .15rem; }
+  .list-container nav > div:last-child {
+    margin-right: .15rem;
+    width: .84rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    border-radius: .15rem;
+    background: #f5f5f5;
+    color: #00b38a; }
+
+.list-container ul {
+  background: #fff; }
+  .list-container ul li.list-item {
+    display: flex;
+    padding: .15rem;
+    border-bottom: solid 1px #ccc; }
+    .list-container ul li.list-item img {
+      width: .6rem;
+      height: .6rem;
+      padding-right: .15rem; }
+    .list-container ul li.list-item .item-desc {
+      flex: 1; }
+      .list-container ul li.list-item .item-desc .item-title {
+        font-size: .2rem;
+        font-weight: bold; }
+      .list-container ul li.list-item .item-desc .item-info {
+        line-height: .3rem;
+        display: flex; }
+        .list-container ul li.list-item .item-desc .item-info .item-pos {
+          flex: 1; }
+        .list-container ul li.list-item .item-desc .item-info .item-salary {
+          font-size: .16rem;
+          color: #00b38a;
+          width: .7rem;
+          text-align: right; }
+      .list-container ul li.list-item .item-desc .item-time {
+        font-size: .12rem;
+        color: #888; }
