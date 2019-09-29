@@ -128,7 +128,18 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const layoutView = __webpack_require__(/*! ./views/layout.art */ \"./src/scripts/views/layout.art\")\n\nconst html = layoutView({\n  name: 'yangli'\n})\n\ndocument.querySelector('#root').innerHTML = html\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/index.js":
+/*!******************************************!*\
+  !*** ./src/scripts/controllers/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/scripts/views/layout.art\")\n\nclass Index {\n  constructor() {\n    this.render()\n  }\n\n  render() {\n    const html = layoutView({\n      name: 'yangli'\n    })\n    \n    document.querySelector('#root').innerHTML = html\n  }\n}\n\nnew Index()\n\n//# sourceURL=webpack:///./src/scripts/controllers/index.js?");
 
 /***/ }),
 
@@ -139,7 +150,7 @@ eval("const layoutView = __webpack_require__(/*! ./views/layout.art */ \"./src/s
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '', $escape = $imports.$escape, name = $data.name;\n    $$out += '<div>';\n    $$out += $escape(name);\n    $$out += '</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"indexContainer\">\\n  <header>拉勾网</header>\\n  <main>\\n  </main>\\n  <footer>\\n    <ul>\\n      <li class=\"active\"><span class=\"yo-ico\">&#xe7d4;</span>职位</li>\\n      <li><span class=\"yo-ico\">&#xe7da;</span>搜索</li>\\n      <li><span class=\"yo-ico\">&#xe78b;</span>我的</li>\\n    </ul>\\n  </footer>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
 
 /***/ })
 

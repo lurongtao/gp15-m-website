@@ -719,3 +719,44 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle; }
+
+#root {
+  height: 100%; }
+
+@font-face {
+  font-family: 'yofont';
+  src: url("/assets/icons/iconfont.woff") format("woff"), url("/assets/icons/iconfont.ttf") format("truetype"); }
+
+.indexContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+  .indexContainer header {
+    height: .44rem;
+    background: #00b38a;
+    font-size: .18rem;
+    text-align: center;
+    line-height: .44rem;
+    color: #fff; }
+  .indexContainer main {
+    flex: 1; }
+  .indexContainer footer {
+    height: .44rem; }
+    .indexContainer footer ul {
+      height: 100%;
+      display: flex; }
+      .indexContainer footer ul li {
+        flex: 1;
+        background: #f6f6f6;
+        text-align: center;
+        line-height: .44rem;
+        font-size: .18rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c2cfcc; }
+        .indexContainer footer ul li span {
+          font-size: .2rem; }
+        .indexContainer footer ul li.active {
+          background: #e7f3f0;
+          color: #00b38a; }

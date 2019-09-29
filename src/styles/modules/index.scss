@@ -1,0 +1,43 @@
+.indexContainer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  header {
+    height: .44rem;
+    background: #00b38a;
+    font-size: .18rem;
+    text-align: center;
+    line-height: .44rem;
+    color: #fff;
+  }
+
+  main {
+    flex: 1;
+  }
+
+  footer {
+    height: .44rem;
+    ul {
+      height: 100%;
+      display: flex;
+      li {
+        flex: 1;
+        background: #f6f6f6;
+        text-align: center;
+        line-height: .44rem;
+        font-size: .18rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #c2cfcc;
+        span {
+          font-size: .2rem;
+        }
+        &.active {
+          background: #e7f3f0;
+          color: #00b38a;
+        }
+      }
+    }
+  }
+}

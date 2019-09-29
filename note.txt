@@ -17,3 +17,16 @@ const layoutView = require('./views/layout.art')
 console.log(layoutView({
   name: 'yangli'
 }))
+
+2019-09-29
+RMVC:
+R-Router
+M-Model
+V-View
+C-Controller
+
+适配方案：
+100%布局
+rem: 单位 root(html) em
+
+filezilla

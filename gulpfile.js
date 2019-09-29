@@ -17,9 +17,15 @@ function copylibs() {
     .pipe(dest('./dev/libs'))
 }
 
+// copylibs
+function copyassets() {
+  return src('./src/assets/**/*')
+    .pipe(dest('./dev/assets'))
+}
+
 // 编译sass
 function packSCSS() {
-  return src('./src/styles/**/*.scss')
+  return src(['./src/styles/**/*.scss', '!./src/styles/yo/**/*.scss'])
     .pipe(sass().on('error', sass.logError))
     .pipe(dest('./dev/styles/'))
     .pipe(connect.reload())
@@ -66,8 +72,8 @@ function gulpServer() {
 function watchFiles() {
   watch('./src/*.html', series(copyhtml))
   watch('./src/libs/*', series(copylibs))
-  watch('./src/**/*.js', series(packJS))
+  watch('./src/**/*', series(packJS))
   watch('./src/**/*.scss', series(packSCSS))
 }
 
-exports.default = series(parallel(copyhtml, copylibs, packSCSS, packJS), parallel(gulpServer, watchFiles))
+exports.default = series(parallel(copyhtml, copyassets, copylibs, packSCSS, packJS), parallel(gulpServer, watchFiles))
