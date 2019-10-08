@@ -1,6 +1,6 @@
 const positionView = require('../views/position.art')
 
-// const BScroll = require('better-scroll')
+const BScroll = require('better-scroll')
 
 class Position {
   constructor() {
@@ -8,11 +8,37 @@ class Position {
   }
 
   render() {
-    let main = document.querySelector('main')
     let html = positionView({})
-    main.innerHTML = html
+    let $main = $('main')
+    $main.html(html)
+    new BScroll.default($main.get(0), {})
+
+    // let obj = {
+    //   xml: {
+    //     x: {a: 0},
+    //     y: {a: 1},
+    //     z: {a: 2}
+    //   }
+    // }
+
+    // {
+    //   x: 0,
+    //   y: 1,
+    //   z: 2
+    // }
+
+    // let result = [1, 4, 5].reduce((total, item) => {
+    //   return total + item
+    // }, 0)
+
+    // let result = Object.keys(obj.xml).reduce((res, item) => {
+    //   res[item] = obj.xml[item]['a']
+    //   return res
+    // }, {})
     
-    new BScroll(main, {})
+    // console.log(result)
+
+    console.log($.os.phone)
   }
 }
 

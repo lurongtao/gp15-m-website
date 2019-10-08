@@ -35,3 +35,30 @@ DPR: device pixel radio  逻辑像素/物理像素
 retina 屏
 
 http://ustbhuangyi.github.io/better-scroll/doc/api.html
+
+2019-10-08
+M站：
+0、架构
+- 前后端分离
+- RMVC
+- art-template
+
+1、工程化： gulp
+- v4.x
+- webserver: gulp-connect
+- packcss: gulp-sass, node-sass
+- packjs: gulp-webstream
+
+2、移动端布局
+- 100%布局：flexbox
+- yo
+- 1px border
+
+3、第三方库
+- better-scroll
+- zepto
+
+
+// hello-there kebab-case
+// helloThere camelCase
+// HelloThere pascalCase
