@@ -22,10 +22,9 @@
   background: #fff; }
   .list-container ul li.list-item {
     display: flex;
-    padding: .15rem;
-    border-bottom: solid 1px #ccc; }
+    padding: .15rem; }
     .list-container ul li.list-item img {
-      width: .6rem;
+      width: .75rem;
       height: .6rem;
       padding-right: .15rem; }
     .list-container ul li.list-item .item-desc {
@@ -46,3 +45,27 @@
       .list-container ul li.list-item .item-desc .item-time {
         font-size: .12rem;
         color: #888; }
+
+.list-container .head,
+.list-container .foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: .4rem; }
+
+.list-container .head img,
+.list-container .foot img {
+  width: .16rem;
+  height: .16rem;
+  transition: transform 150ms;
+  -webkit-transition: transform 150ms; }
+
+.list-container .head img {
+  transform: rotate(180deg); }
+
+.list-container .up {
+  transform: rotate(360deg) !important;
+  -webkit-transform: rotate(360deg) !important; }
+
+.list-container .down {
+  transform: rotate(180deg); }

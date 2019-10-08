@@ -3,6 +3,7 @@ const { src, dest, series, parallel, watch } = require('gulp')
 const connect = require('gulp-connect')
 const sass = require('gulp-sass')
 const webpack = require('webpack-stream')
+const proxy = require('http-proxy-middleware')
 
 // copyhtml
 function copyhtml() {
@@ -64,7 +65,18 @@ function gulpServer() {
     name: 'Dist App',
     root: './dev',
     port: 8000,
-    livereload: true
+    livereload: true,
+    middleware: () => {
+      return [
+        proxy('/api', {
+          target: 'https://m.lagou.com',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': ''
+          }
+        })
+      ]
+    }
   })
 }
 
@@ -74,6 +86,7 @@ function watchFiles() {
   watch('./src/libs/*', series(copylibs))
   watch('./src/**/*', series(packJS))
   watch('./src/**/*.scss', series(packSCSS))
+  watch('./src/assets/*', series(copyassets))
 }
 
 exports.default = series(parallel(copyhtml, copyassets, copylibs, packSCSS, packJS), parallel(gulpServer, watchFiles))

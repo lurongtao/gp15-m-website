@@ -10,7 +10,7 @@ class Index {
       name: 'yangli'
     })
     
-    document.querySelector('#root').innerHTML = html
+    $('#root').html(html)
   }
 }
 

@@ -8,12 +8,13 @@
 
     @include border(0 0 1px 0, #e8e8e8);
 
-    > div:first-child {
+    >div:first-child {
       flex: 1;
       line-height: .44rem;
       padding-left: .15rem;
     }
-    > div:last-child {
+
+    >div:last-child {
       margin-right: .15rem;
       width: .84rem;
       height: .3rem;
@@ -27,29 +28,35 @@
 
   ul {
     background: #fff;
+
     li.list-item {
       display: flex;
       padding: .15rem;
       @include border(0 0 1px 0, #e8e8e8);
-      
+
       img {
-        width: .6rem;
+        width: .75rem;
         height: .6rem;
         padding-right: .15rem;
       }
+
       .item-desc {
         flex: 1;
+
         .item-title {
           font-size: .2rem;
           font-weight: bold;
 
         }
+
         .item-info {
           line-height: .3rem;
           display: flex;
+
           .item-pos {
             flex: 1;
           }
+
           .item-salary {
             font-size: .16rem;
             color: #00b38a;
@@ -57,11 +64,41 @@
             text-align: right
           }
         }
+
         .item-time {
           font-size: .12rem;
           color: #888;
         }
       }
     }
+  }
+
+  .head,
+  .foot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: .4rem;
+  }
+
+  .head img,
+  .foot img {
+    width: .16rem;
+    height: .16rem;
+    transition: transform 150ms;
+    -webkit-transition: transform 150ms;
+  }
+
+  .head img {
+    transform: rotate(180deg);
+  }
+
+  .up {
+    transform: rotate(360deg) !important;
+    -webkit-transform: rotate(360deg) !important;
+  }
+
+  .down {
+    transform: rotate(180deg);
   }
 }
