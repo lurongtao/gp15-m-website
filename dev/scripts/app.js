@@ -140,7 +140,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n__webpack_require__(/*! ./controllers/positions */ \"./src/scripts/controllers/positions.js\")\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n__webpack_require__(/*! ./controllers/positions */ \"./src/scripts/controllers/positions.js\")\n// require('./controllers/profile')\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
 
 /***/ }),
 

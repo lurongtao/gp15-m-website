@@ -740,7 +740,7 @@ a {
     color: #fff; }
   .index-container main {
     flex: 1;
-    overflow: hidden; }
+    overflow-y: scroll; }
   .index-container footer {
     height: .44rem; }
     .index-container footer ul {
@@ -803,7 +803,7 @@ a {
     padding-left: .15rem; }
   .list-container nav > div:last-child {
     margin-right: .15rem;
-    width: .84rem;
+    width: 22.4vw;
     height: .3rem;
     line-height: .3rem;
     text-align: center;
@@ -850,15 +850,29 @@ a {
       height: .6rem;
       padding-right: .15rem; }
     .list-container ul li.list-item .item-desc {
-      flex: 1; }
+      flex: 1;
+      width: 100%;
+      overflow: hidden; }
       .list-container ul li.list-item .item-desc .item-title {
-        font-size: .2rem;
-        font-weight: bold; }
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%; }
+        @media screen and (max-device-width: 375px) {
+          .list-container ul li.list-item .item-desc .item-title {
+            font-size: 16px; } }
+        @media screen and (min-device-width: 376px) {
+          .list-container ul li.list-item .item-desc .item-title {
+            font-size: 20px; } }
       .list-container ul li.list-item .item-desc .item-info {
         line-height: .3rem;
         display: flex; }
         .list-container ul li.list-item .item-desc .item-info .item-pos {
-          flex: 1; }
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
         .list-container ul li.list-item .item-desc .item-info .item-salary {
           font-size: .16rem;
           color: #00b38a;
@@ -891,3 +905,20 @@ a {
 
 .list-container .down {
   transform: rotate(180deg); }
+
+.profile-container > div:first-child {
+  height: 0;
+  font-size: 0;
+  padding-bottom: 74.93333%; }
+  .profile-container > div:first-child img {
+    width: 100%; }
+
+.profile-container > div:last-child ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: .1rem; }
+  .profile-container > div:last-child ul li {
+    width: 50%;
+    padding: .1rem 0 0 .1rem; }
+    .profile-container > div:last-child ul li img {
+      width: 100%; }

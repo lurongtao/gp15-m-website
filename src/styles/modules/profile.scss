@@ -1,0 +1,25 @@
+.profile-container {
+  > div:first-child {
+    height: 0;
+    font-size: 0;
+    padding-bottom: 74.93333%;
+    img {
+      width: 100%;
+    }
+  }
+
+  > div:last-child {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      padding-right: .1rem;
+      li {
+        width: 50%;
+        padding: .1rem 0 0 .1rem;
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

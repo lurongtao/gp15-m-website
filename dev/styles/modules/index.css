@@ -11,7 +11,7 @@
     color: #fff; }
   .index-container main {
     flex: 1;
-    overflow: hidden; }
+    overflow-y: scroll; }
   .index-container footer {
     height: .44rem; }
     .index-container footer ul {

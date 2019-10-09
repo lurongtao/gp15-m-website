@@ -16,7 +16,7 @@
 
     >div:last-child {
       margin-right: .15rem;
-      width: .84rem;
+      width: 22.4vw;
       height: .3rem;
       line-height: .3rem;
       text-align: center;
@@ -42,11 +42,19 @@
 
       .item-desc {
         flex: 1;
+        width: 100%;
+        overflow: hidden;
 
         .item-title {
-          font-size: .2rem;
+          @media screen and (max-device-width: 375px) {
+            font-size: 16px;
+          }
+          @media screen and (min-device-width: 376px) {
+            font-size: 20px;
+          }
           font-weight: bold;
-
+          @include ellipsis(null, 1);
+          width: 100%;
         }
 
         .item-info {
@@ -55,6 +63,7 @@
 
           .item-pos {
             flex: 1;
+            @include ellipsis();
           }
 
           .item-salary {
