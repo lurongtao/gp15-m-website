@@ -6,7 +6,7 @@ const BScroll = require('better-scroll')
 
 class Position {
   constructor() {
-    this.render()
+    // this.render()
     this.list = []
     this.pageNo = 1
     this.totalCount = 0
@@ -113,4 +113,4 @@ class Position {
   }
 }
 
-new Position()
+export default new Position()

@@ -140,7 +140,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n__webpack_require__(/*! ./controllers/positions */ \"./src/scripts/controllers/positions.js\")\n// require('./controllers/profile')\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
+eval("// 显示layout\n__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/index.js\")\n\n//# sourceURL=webpack:///./src/scripts/app.js?");
 
 /***/ }),
 
@@ -148,10 +148,11 @@ eval("__webpack_require__(/*! ./controllers/ */ \"./src/scripts/controllers/inde
 /*!******************************************!*\
   !*** ./src/scripts/controllers/index.js ***!
   \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/scripts/views/layout.art\")\n\nclass Index {\n  constructor() {\n    this.render()\n  }\n\n  render() {\n    const html = layoutView({\n      name: 'yangli'\n    })\n    \n    $('#root').html(html)\n  }\n}\n\nnew Index()\n\n//# sourceURL=webpack:///./src/scripts/controllers/index.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _positions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./positions */ \"./src/scripts/controllers/positions.js\");\n/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search */ \"./src/scripts/controllers/search.js\");\n/* harmony import */ var _profile__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./profile */ \"./src/scripts/controllers/profile.js\");\nconst layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/scripts/views/layout.art\")\n\n\n\n\n\nclass Index {\n  constructor() {\n    this.render()\n  }\n\n  bindClick() {\n    $(this).addClass('active').siblings().removeClass('active')\n\n    let currentPage = $(this).attr('data-page')\n\n    let pageControllers = {\n      positionController: _positions__WEBPACK_IMPORTED_MODULE_0__[\"default\"],\n      searchController: _search__WEBPACK_IMPORTED_MODULE_1__[\"default\"],\n      profileController: _profile__WEBPACK_IMPORTED_MODULE_2__[\"default\"]\n    }\n\n    // let pageControllers = [\n    //   positionController,\n    //   searchController,\n    //   profileController\n    // ]\n\n    // pageControllers[$(this).index()].render()\n    pageControllers[currentPage + 'Controller'].render()\n\n    // switch(currentPage) {\n    //   case 'position':\n    //     positionController.render()\n    //     break;\n    //   case 'search':\n    //     searchController.render()\n    //     break;\n    //   case 'profile':\n    //     profileController.render()\n    //     break;\n    //   default:\n    //     positionController.render()\n    // }\n  }\n\n  render() {\n    const html = layoutView()\n    \n    $('#root').html(html)\n\n    // 绑定事件\n    $('footer li').on('click', this.bindClick)\n\n    // 初始化第一个页面\n    _positions__WEBPACK_IMPORTED_MODULE_0__[\"default\"].render()\n  }\n}\n\nnew Index()\n\n//# sourceURL=webpack:///./src/scripts/controllers/index.js?");
 
 /***/ }),
 
@@ -159,10 +160,35 @@ eval("const layoutView = __webpack_require__(/*! ../views/layout.art */ \"./src/
 /*!**********************************************!*\
   !*** ./src/scripts/controllers/positions.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-eval("const positionView = __webpack_require__(/*! ../views/position.art */ \"./src/scripts/views/position.art\")\nconst positionListView = __webpack_require__(/*! ../views/position-list.art */ \"./src/scripts/views/position-list.art\")\nconst postionModel = __webpack_require__(/*! ../models/postion */ \"./src/scripts/models/postion.js\")\n\nconst BScroll = __webpack_require__(/*! better-scroll */ \"./node_modules/better-scroll/dist/bscroll.esm.js\")\n\nclass Position {\n  constructor() {\n    this.render()\n    this.list = []\n    this.pageNo = 1\n    this.totalCount = 0\n    this.pageSize = 15\n  }\n\n  renderer(list) {\n    let positionListHtml = positionListView({\n      list\n    })\n\n    $('main ul').html(positionListHtml)\n  }\n\n  async render() {\n    let that = this\n\n    let result = await postionModel.get({\n      pageNo: this.pageNo\n    })\n\n    // 把PositionView 先装填到main里\n    let positionHtml =  positionView({})\n    let $main = $('main')\n    $main.html(positionHtml)\n\n    // 再把list装到ul里\n    let list = this.list = result.content.data.page.result\n    that.totalCount = result.content.data.page.totalCount\n\n    this.renderer(list)\n\n    // 定义图片对象\n    let $imgHead = $('.head img')\n    let $imgFoot = $('.foot img')\n\n    // bScroll 是BetterScroll实例，将来可以用来调用API\n    let bScroll = new BScroll.default($('main').get(0), {\n      probeType: 2\n    })\n\n    // 开始要隐藏下拉刷新的div\n    bScroll.scrollBy(0, -40)\n\n    bScroll.on('scrollEnd', async function() {\n      // 下拉刷新\n      if (this.y >= 0) {\n        \n        $imgHead.attr('src', '/assets/images/ajax-loader.gif')\n        \n        let result = await postionModel.get({\n          pageNo: 1,\n          pageSize: 1\n        })\n        \n        let { result: list } = result.content.data.page\n\n        // 1. 将原来数据list和现在返回的数据做拼接，\n        // 2.重新渲染\n        that.list = [...list, ...that.list]\n        that.renderer(that.list)\n\n        bScroll.scrollBy(0, -40)\n        $imgHead.attr('src', '/assets/images/arrow.png')\n        $imgHead.removeClass('up')\n      }\n\n      // 上拉加载更多\n      if (this.maxScrollY >= this.y && Math.ceil(that.totalCount/that.pageSize) >= that.pageNo) {\n        that.pageNo++\n\n        $imgFoot.attr('src', '/assets/images/ajax-loader.gif')\n\n        let result = await postionModel.get({\n          pageNo: that.pageNo,\n          pageSize: that.pageSize\n        })\n        \n        let { result: list, totalCount } = result.content.data.page\n\n        // 更新pageCount, 因为有新的内容发布出来了\n        that.totalCount = totalCount\n\n        // 1.将原来数据list和现在返回的数据做拼接，\n        // 2.重新渲染\n        that.list = [...that.list, ...list]\n        that.renderer(that.list)\n\n        bScroll.scrollBy(0, 40)\n        $imgHead.attr('src', '/assets/images/arrow.png')\n        $imgHead.removeClass('down')\n      }\n    })\n\n    bScroll.on('scroll', function() {\n      if (this.y > 0) {\n        $imgHead.addClass('up')\n      }\n\n      if (this.maxScrollY > this.y) {\n        $imgFoot.addClass('down')\n      }\n    })\n  }\n}\n\nnew Position()\n\n//# sourceURL=webpack:///./src/scripts/controllers/positions.js?");
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\nconst positionView = __webpack_require__(/*! ../views/position.art */ \"./src/scripts/views/position.art\")\nconst positionListView = __webpack_require__(/*! ../views/position-list.art */ \"./src/scripts/views/position-list.art\")\nconst postionModel = __webpack_require__(/*! ../models/postion */ \"./src/scripts/models/postion.js\")\n\nconst BScroll = __webpack_require__(/*! better-scroll */ \"./node_modules/better-scroll/dist/bscroll.esm.js\")\n\nclass Position {\n  constructor() {\n    // this.render()\n    this.list = []\n    this.pageNo = 1\n    this.totalCount = 0\n    this.pageSize = 15\n  }\n\n  renderer(list) {\n    let positionListHtml = positionListView({\n      list\n    })\n\n    $('main ul').html(positionListHtml)\n  }\n\n  async render() {\n    let that = this\n\n    let result = await postionModel.get({\n      pageNo: this.pageNo\n    })\n\n    // 把PositionView 先装填到main里\n    let positionHtml =  positionView({})\n    let $main = $('main')\n    $main.html(positionHtml)\n\n    // 再把list装到ul里\n    let list = this.list = result.content.data.page.result\n    that.totalCount = result.content.data.page.totalCount\n\n    this.renderer(list)\n\n    // 定义图片对象\n    let $imgHead = $('.head img')\n    let $imgFoot = $('.foot img')\n\n    // bScroll 是BetterScroll实例，将来可以用来调用API\n    let bScroll = new BScroll.default($('main').get(0), {\n      probeType: 2\n    })\n\n    // 开始要隐藏下拉刷新的div\n    bScroll.scrollBy(0, -40)\n\n    bScroll.on('scrollEnd', async function() {\n      // 下拉刷新\n      if (this.y >= 0) {\n        \n        $imgHead.attr('src', '/assets/images/ajax-loader.gif')\n        \n        let result = await postionModel.get({\n          pageNo: 1,\n          pageSize: 1\n        })\n        \n        let { result: list } = result.content.data.page\n\n        // 1. 将原来数据list和现在返回的数据做拼接，\n        // 2.重新渲染\n        that.list = [...list, ...that.list]\n        that.renderer(that.list)\n\n        bScroll.scrollBy(0, -40)\n        $imgHead.attr('src', '/assets/images/arrow.png')\n        $imgHead.removeClass('up')\n      }\n\n      // 上拉加载更多\n      if (this.maxScrollY >= this.y && Math.ceil(that.totalCount/that.pageSize) >= that.pageNo) {\n        that.pageNo++\n\n        $imgFoot.attr('src', '/assets/images/ajax-loader.gif')\n\n        let result = await postionModel.get({\n          pageNo: that.pageNo,\n          pageSize: that.pageSize\n        })\n        \n        let { result: list, totalCount } = result.content.data.page\n\n        // 更新pageCount, 因为有新的内容发布出来了\n        that.totalCount = totalCount\n\n        // 1.将原来数据list和现在返回的数据做拼接，\n        // 2.重新渲染\n        that.list = [...that.list, ...list]\n        that.renderer(that.list)\n\n        bScroll.scrollBy(0, 40)\n        $imgHead.attr('src', '/assets/images/arrow.png')\n        $imgHead.removeClass('down')\n      }\n    })\n\n    bScroll.on('scroll', function() {\n      if (this.y > 0) {\n        $imgHead.addClass('up')\n      }\n\n      if (this.maxScrollY > this.y) {\n        $imgFoot.addClass('down')\n      }\n    })\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Position());\n\n//# sourceURL=webpack:///./src/scripts/controllers/positions.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/profile.js":
+/*!********************************************!*\
+  !*** ./src/scripts/controllers/profile.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_profile_art__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/profile.art */ \"./src/scripts/views/profile.art\");\n/* harmony import */ var _views_profile_art__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_views_profile_art__WEBPACK_IMPORTED_MODULE_0__);\n\n\nclass Profile {\n  render() {\n    let html = _views_profile_art__WEBPACK_IMPORTED_MODULE_0___default()({})\n    $('main').html(html)\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Profile());\n\n//# sourceURL=webpack:///./src/scripts/controllers/profile.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/controllers/search.js":
+/*!*******************************************!*\
+  !*** ./src/scripts/controllers/search.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _views_search_art__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../views/search.art */ \"./src/scripts/views/search.art\");\n/* harmony import */ var _views_search_art__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_views_search_art__WEBPACK_IMPORTED_MODULE_0__);\n\n\nclass Search {\n  render() {\n    let html = _views_search_art__WEBPACK_IMPORTED_MODULE_0___default()()\n    $('main').html(html)\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (new Search());\n\n//# sourceURL=webpack:///./src/scripts/controllers/search.js?");
 
 /***/ }),
 
@@ -184,7 +210,7 @@ eval("module.exports = {\n  get({pageNo=1, pageSize=15}) {\n    return $.ajax({\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"index-container\">\\n  <header>拉勾网</header>\\n  <main>\\n  </main>\\n  <footer>\\n    <ul>\\n      <li class=\"active\"><span class=\"yo-ico\">&#xe7d4;</span>职位</li>\\n      <li><span class=\"yo-ico\">&#xe7da;</span>搜索</li>\\n      <li><span class=\"yo-ico\">&#xe78b;</span>我的</li>\\n    </ul>\\n  </footer>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"index-container\">\\n  <header>拉勾网</header>\\n  <main>\\n  </main>\\n  <footer>\\n    <ul>\\n      <li data-page=\"position\" class=\"active\"><span class=\"yo-ico\">&#xe7d4;</span>职位</li>\\n      <li data-page=\"search\"><span class=\"yo-ico\">&#xe7da;</span>搜索</li>\\n      <li data-page=\"profile\"><span class=\"yo-ico\">&#xe78b;</span>我的</li>\\n    </ul>\\n  </footer>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/layout.art?");
 
 /***/ }),
 
@@ -207,6 +233,28 @@ eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"list-container\">\\n  <div class=\"head\">\\n    <img ';\n    $$out += 'src=\"/assets/images/arrow.png\"';\n    $$out += '/>\\n    <b>下拉刷新...</b>\\n  </div>\\n  <nav>\\n    <div>10秒钟定制职位</div>\\n    <div>去登录</div>\\n  </nav>\\n  <ul></ul>\\n  <div class=\"foot\">\\n    <img ';\n    $$out += 'src=\"/assets/images/arrow.png\"';\n    $$out += '/>\\n    <b>上拉加载更多...</b>\\n  </div>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/position.art?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/profile.art":
+/*!***************************************!*\
+  !*** ./src/scripts/views/profile.art ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div class=\"profile-container\">\\n  <div>\\n    <img ';\n    $$out += 'src=\"https://img.zcool.cn/community/031f4e65d9c72aba801211d53bb0095.jpg@520w_390h_1c_1e_1o_100sh.jpg\"';\n    $$out += ' alt=\"\">\\n  </div>\\n  <div>\\n    <ul>\\n      <li>\\n        <img ';\n    $$out += 'src=\"https://www.lgstatic.com/i/image2/M01/A7/0F/CgotOVvie8-AQrJbAAA_hBRnWFA536.png\"';\n    $$out += ' alt=\"\">\\n      </li>\\n      <li>\\n        <img ';\n    $$out += 'src=\"https://www.lgstatic.com/i/image3/M00/16/E9/Cgq2xlp0CmyAeVLyAABR-qEHZTA143.jpg\"';\n    $$out += ' alt=\"\">\\n      </li>\\n      <li>\\n        <img ';\n    $$out += 'src=\"https://www.lgstatic.com/i/image2/M00/45/8E/CgoB5lrQSK6AFO3nAAA8L-KQi-0263.png\"';\n    $$out += ' alt=\"\">\\n      </li>\\n      <li>\\n        <img ';\n    $$out += 'src=\"https://www.lgstatic.com/i/image2/M01/A7/0F/CgotOVvie8-AQrJbAAA_hBRnWFA536.png\"';\n    $$out += ' alt=\"\">\\n      </li>\\n    </ul>\\n  </div>\\n</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/profile.art?");
+
+/***/ }),
+
+/***/ "./src/scripts/views/search.art":
+/*!**************************************!*\
+  !*** ./src/scripts/views/search.art ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("var $imports = __webpack_require__(/*! ../../../node_modules/art-template/lib/runtime.js */ \"./node_modules/art-template/lib/runtime.js\");\nmodule.exports = function ($data) {\n    'use strict';\n    $data = $data || {};\n    var $$out = '';\n    $$out += '<div>search</div>';\n    return $$out;\n};\n\n//# sourceURL=webpack:///./src/scripts/views/search.art?");
 
 /***/ })
 
