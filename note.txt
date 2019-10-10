@@ -70,3 +70,13 @@ insomina
 1. 100%布局（流式布局）
 2. Rem布局（等比缩放布局）
 3. 响应式布局
+
+2019-10-10
+browser-sync
+
+browser-sync start -s -f **/* --directory
+
+https://www.bootcdn.cn/jquery/
+
+单页面应用(single page application): SPA
+多页面应用(multiple page application): MPA
