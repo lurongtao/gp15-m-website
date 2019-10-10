@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx gulp",
+    "start": "npx gulp -f src/config/gulpfile-dev.js",
+    "build": "npx gulp -f src/config/gulpfile-build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,7 +13,10 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
     "gulp-connect": "^5.7.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-rev-collector": "^1.3.1",
     "gulp-sass": "^4.0.2",
     "http-proxy-middleware": "^0.20.0",
     "node-sass": "^4.12.0",

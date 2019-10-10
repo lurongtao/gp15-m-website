@@ -1,2 +1,2 @@
-// 显示layout
-require('./controllers/')
+// 引入路由
+import "./router/"
