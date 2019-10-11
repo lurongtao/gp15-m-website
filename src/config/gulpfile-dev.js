@@ -57,6 +57,14 @@ function packJS() {
           {
             test: /\.art$/,
             loader: "art-template-loader"
+          },
+          {
+            test: /\.scss$/,
+            use: [
+              'style-loader',
+              'css-loader',
+              'sass-loader',
+            ],
           }
         ]
       }

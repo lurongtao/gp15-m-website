@@ -2,6 +2,8 @@ const positionView = require('../views/position.art')
 const positionListView = require('../views/position-list.art')
 const postionModel = require('../models/postion')
 
+import indexController from './index'
+
 const BScroll = require('better-scroll')
 
 class Position {
@@ -27,6 +29,17 @@ class Position {
   }
 
   async render() {
+    indexController.render()
+    // js
+    $('html').css({
+      'font-size': '100px',
+      'background': '#eee',
+      'overflow-y': 'hidden'
+    })
+    $('body').css({
+      'overflow': 'hidden'
+    })
+
     let that = this
 
     let result = await postionModel.get({

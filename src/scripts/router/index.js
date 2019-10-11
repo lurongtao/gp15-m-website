@@ -33,21 +33,26 @@ class Router {
 
   handlePageload() {
     let hash = location.hash.substr(1) || 'position'
+    let reg = new RegExp('^(\\w+)', 'g')
+    let path = reg.exec(hash)
+
     indexController.render()
     location.hash = hash
 
     // 初始化的时候也需要渲染DOM和设置高亮
-    this.renderDOM(hash)
-    this.setActiveClass(hash)
+    this.renderDOM(path[1])
+    this.setActiveClass(path[1])
   }
 
   handleHashchange(e) {
     let hash = location.hash.substr(1)
+    let reg = new RegExp('^(\\w+)', 'g')
+    let path = reg.exec(hash)
 
     // 渲染DOM
-    this.renderDOM(hash)
+    this.renderDOM(path[1])
     // 设置高亮
-    this.setActiveClass(hash)
+    this.setActiveClass(path[1])
   }
 }
 

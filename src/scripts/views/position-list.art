@@ -1,5 +1,5 @@
 {{each list}}
-  <li class="list-item" data-id="{{$value.id}}">
+  <li class="list-item" data-id="{{$value.positionId}}">
     <img src="//www.lgstatic.com/{{$value.companyLogo}}" class="item-logo">
     <div class="item-desc">
       <h2 class="item-title">{{$value.positionName}}</h2>
