@@ -1,6 +1,5 @@
 const path = require('path')
 const { src, dest, series, parallel} = require('gulp')
-const connect = require('gulp-connect')
 const sass = require('gulp-sass')
 const webpack = require('webpack-stream')
 const cleanCSS = require('gulp-clean-css')
@@ -15,7 +14,6 @@ function copyhtml() {
   return src([`${buildPath}/rev/**/*.json`, '../*.html'])
     .pipe(revCollector())
     .pipe(dest(buildPath))
-    .pipe(connect.reload())
 }
 
 // copylibs
@@ -39,7 +37,6 @@ function packSCSS() {
     .pipe(dest(`${buildPath}/styles`))
     .pipe(rev.manifest())
     .pipe(dest(`${buildPath}/rev/styles`))
-    .pipe(connect.reload())
 }
 
 // JS模块化
@@ -65,8 +62,10 @@ function packJS() {
         ]
       }
     }))
+    .pipe(rev())
     .pipe(dest(`${buildPath}/scripts`))
-    .pipe(connect.reload())
+    .pipe(rev.manifest({}))
+    .pipe(dest(`${buildPath}/rev/scripts`))
 }
 
 exports.default = series(parallel(copyassets, copylibs, packSCSS, packJS), copyhtml)
