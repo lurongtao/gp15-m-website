@@ -4,6 +4,7 @@ import indexController from '../controllers/'
 import positionController from '../controllers/positions'
 import searchController from '../controllers/search'
 import profileController from '../controllers/profile'
+import detailController from '../controllers/detail'
 
 class Router {
   constructor() {
@@ -23,7 +24,8 @@ class Router {
     let pageControllers = {
       positionController,
       searchController,
-      profileController
+      profileController,
+      detailController
     }
 
     pageControllers[hash + 'Controller'].render()

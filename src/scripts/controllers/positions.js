@@ -19,6 +19,11 @@ class Position {
     })
 
     $('main ul').html(positionListHtml)
+
+    $('main ul li').on('tap', function() {
+      let id = $(this).attr('data-id')
+      location.hash = `detail/${id}`
+    })
   }
 
   async render() {

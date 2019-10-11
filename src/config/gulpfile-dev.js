@@ -36,13 +36,17 @@ function packSCSS() {
 
 // JS模块化
 function packJS() {
-  return src('../scripts/app.js')
+  return src('../scripts/*.js')
     .pipe(webpack({
       mode: 'development',
-      entry: '../scripts/app.js',
+      entry: {
+        app: '../scripts/app.js',
+        'app-search': '../scripts/app-search.js',
+        'app-profile': '../scripts/app-profile.js',
+      },
       output: {
         path: path.resolve(__dirname, devPath),
-        filename: 'app.js'
+        filename: '[name].js'
       },
       module: {
         rules: [
