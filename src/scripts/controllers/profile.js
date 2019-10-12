@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import profileView from '../views/profile.art'
 
 class Profile {
@@ -8,3 +9,5 @@ class Profile {
 }
 
 export default new Profile()
+
+console.log(_.chunk(['a', 'b', 'c', 'd'], 2))

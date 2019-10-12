@@ -79,6 +79,7 @@ function gulpServer() {
     name: 'Dist App',
     root: devPath,
     port: 8000,
+    host: '10.9.49.156',
     livereload: true,
     middleware: () => {
       return [
