@@ -78,17 +78,14 @@ function gulpServer() {
   return connect.server({
     name: 'Dist App',
     root: devPath,
-    port: 8000,
+    port: 8080,
     host: '10.9.49.156',
     livereload: true,
     middleware: () => {
       return [
         proxy('/api', {
-          target: 'https://m.lagou.com',
-          changeOrigin: true,
-          pathRewrite: {
-            '^/api': ''
-          }
+          target: 'http://localhost:3000',
+          changeOrigin: true
         })
       ]
     }

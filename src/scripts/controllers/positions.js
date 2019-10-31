@@ -12,7 +12,7 @@ class Position {
     this.list = []
     this.pageNo = 1
     this.totalCount = 0
-    this.pageSize = 15
+    this.pageSize = 10
   }
 
   renderer(list) {
@@ -30,6 +30,7 @@ class Position {
 
   async render() {
     indexController.render()
+
     // js
     $('html').css({
       'font-size': '100px',
@@ -43,7 +44,8 @@ class Position {
     let that = this
 
     let result = await postionModel.get({
-      pageNo: this.pageNo
+      start: (this.pageNo - 1) * this.pageSize,
+      count: this.pageSize
     })
 
     // 把PositionView 先装填到main里
@@ -52,8 +54,8 @@ class Position {
     $main.html(positionHtml)
 
     // 再把list装到ul里
-    let list = this.list = result.content.data.page.result
-    that.totalCount = result.content.data.page.totalCount
+    let list = this.list = result.data.list
+    that.totalCount = result.data.total
 
     this.renderer(list)
 
@@ -76,16 +78,15 @@ class Position {
         $imgHead.attr('src', '/assets/images/ajax-loader.gif')
         
         let result = await postionModel.get({
-          pageNo: 1,
-          pageSize: 1
+          start: 0,
+          count: 10
         })
         
-        let { result: list } = result.content.data.page
+        let list = result.data.list
 
         // 1. 将原来数据list和现在返回的数据做拼接，
         // 2.重新渲染
-        that.list = [...list, ...that.list]
-        that.renderer(that.list)
+        that.renderer(list)
 
         bScroll.scrollBy(0, -40)
         $imgHead.attr('src', '/assets/images/arrow.png')
@@ -99,14 +100,14 @@ class Position {
         $imgFoot.attr('src', '/assets/images/ajax-loader.gif')
 
         let result = await postionModel.get({
-          pageNo: that.pageNo,
-          pageSize: that.pageSize
+          start: that.pageNo,
+          count: that.pageSize
         })
         
-        let { result: list, totalCount } = result.content.data.page
+        let { list, total } = result.data
 
         // 更新pageCount, 因为有新的内容发布出来了
-        that.totalCount = totalCount
+        that.totalCount = total
 
         // 1.将原来数据list和现在返回的数据做拼接，
         // 2.重新渲染

@@ -1,6 +1,6 @@
 {{each list}}
-  <li class="list-item" data-id="{{$value.positionId}}">
-    <img src="//www.lgstatic.com/{{$value.companyLogo}}" class="item-logo">
+  <li class="list-item" data-id="{{$value._id}}">
+    <img src="http://localhost:3000/uploads/{{$value.companyLogo}}" class="item-logo">
     <div class="item-desc">
       <h2 class="item-title">{{$value.positionName}}</h2>
       <p class="item-info">

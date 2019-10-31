@@ -1,7 +1,7 @@
 module.exports = {
-  get({pageNo=1, pageSize=15}) {
+  get({start=0, count=10}) {
     return $.ajax({
-      url: `/api/listmore.json?pageNo=${pageNo}&pageSize=${pageSize}`
+      url: `/api/position`
     })
   }
 }
